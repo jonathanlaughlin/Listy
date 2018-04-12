@@ -10,7 +10,8 @@ import UIKit
 
 class ListyViewController: UITableViewController {
     
-    let itemArray = ["a","b","c"]
+    // initializes the array and explicitly types it to avoid errors.
+    var itemArray = [] as [String]
 
     override func viewDidLoad() {
         
@@ -40,6 +41,31 @@ class ListyViewController: UITableViewController {
             tableView.deselectRow(at: indexPath, animated: true)
 
     }
-
+    
+    //MARK - Add New Items
+    
+    @IBAction func AddButtonPressed(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add New Listy Item", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+            
+            self.itemArray.append(textField.text!)
+            self.tableView.reloadData()
+            
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create New Item"
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
