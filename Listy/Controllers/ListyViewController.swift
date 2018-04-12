@@ -11,7 +11,8 @@ import UIKit
 class ListyViewController: UITableViewController {
     
     // initializes the array and explicitly types it to avoid errors.
-    var itemArray = [] as [String]
+    // var itemArray = [Item]()
+    var itemArray = [] as [Item]
 
     override func viewDidLoad() {
         
@@ -29,7 +30,8 @@ class ListyViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListyCell", for: indexPath)
         
-        cell.textLabel?.text = itemArray[indexPath.row]
+        cell.textLabel?.text = itemArray[indexPath.row].title
+        
         
         return cell
     }
@@ -52,7 +54,12 @@ class ListyViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             
-            self.itemArray.append(textField.text!)
+            let newItem = Item()
+            newItem.title = textField.text!
+            newItem.metaRandom = Int(arc4random())
+            //print(newItem.metaRandom)
+            
+            self.itemArray.append(newItem)
             self.tableView.reloadData()
             
         }
