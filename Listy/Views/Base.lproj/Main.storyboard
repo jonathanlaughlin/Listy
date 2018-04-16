@@ -100,15 +100,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Listy" id="8aZ-vC-IWt">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7Ct-sn-LFs">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qUH-XP-yWx">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="addButtonPressed:" destination="hhO-B2-LRe" id="E6i-gY-dBd"/>
+                                <action selector="addButtonPressed:" destination="hhO-B2-LRe" id="4Lo-le-DQC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addButtonPressed" destination="7Ct-sn-LFs" id="NTO-yg-PhL"/>
                         <segue destination="H58-Jc-1sL" kind="show" identifier="goToItems" id="Tzi-bM-ssP"/>
                     </connections>
                 </tableViewController>

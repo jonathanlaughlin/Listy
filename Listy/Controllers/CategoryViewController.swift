@@ -39,32 +39,21 @@ class CategoryViewController: UITableViewController {
         
     }
     
-    //MARK: Add New Categories
-    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+    //MARK: Tabvleview Delegate Methods
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToItems", sender: self)
         
-//        var textField = UITextField()
-//        
-//        let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
-//        
-//        let action = UIAlertAction(title: "Add category", style: .default) { (action) in
-//            
-//            let newCategory = Category(context: self.context)
-//            newCategory.name = textField.text!
-//            
-//            self.categories.append(newCategory)
-//            self.saveCategories()
-//            //self.tableView.reloadData()
-//        }
-//        
-//        alert.addAction(action)
-//        
-//        alert.addTextField { (field) in
-//            textField = field
-//            textField.placeholder = "Category name"
-//        }
-//        
-//        present(alert, animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ListyViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCategory = categories[indexPath.row]
+        }
+    }
+
     
     //MARK: Data Manipulation Methods
     
@@ -91,7 +80,32 @@ class CategoryViewController: UITableViewController {
     }
 
     
-    //MARK: Tabvleview Delegate Methods
     
+    //MARK: Add New Categories
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+                var textField = UITextField()
+        
+                let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
+        
+                let action = UIAlertAction(title: "Add category", style: .default) { (action) in
+        
+                    let newCategory = Category(context: self.context)
+                    newCategory.name = textField.text!
+        
+                    self.categories.append(newCategory)
+                    self.saveCategories()
+                    //self.tableView.reloadData()
+                }
+        
+                alert.addAction(action)
+        
+                alert.addTextField { (field) in
+                    textField = field
+                    textField.placeholder = "Category name"
+                }
+        
+                present(alert, animated: true, completion: nil)
+    }
     
 }
