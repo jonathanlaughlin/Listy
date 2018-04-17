@@ -7,23 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E70B9E1208541A500849C63 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E70B9E0208541A500849C63 /* Item.swift */; };
+		8E70B9E3208541B400849C63 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E70B9E2208541B400849C63 /* Category.swift */; };
 		8EED4157207F8902001865E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED4156207F8902001865E7 /* AppDelegate.swift */; };
 		8EED4159207F8902001865E7 /* ListyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED4158207F8902001865E7 /* ListyViewController.swift */; };
 		8EED415C207F8902001865E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EED415A207F8902001865E7 /* Main.storyboard */; };
 		8EED4161207F8904001865E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EED4160207F8904001865E7 /* Assets.xcassets */; };
-		8EED4174207FB1A2001865E7 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8EED4171207FA9A1001865E7 /* DataModel.xcdatamodeld */; };
 		8EED4178207FD2BE001865E7 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED4177207FD2BE001865E7 /* CategoryViewController.swift */; };
 		C6C7E69957D19907F6C7D170 /* Pods_Listy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5CB05325D110110A9F0AB5 /* Pods_Listy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E70B9E0208541A500849C63 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		8E70B9E2208541B400849C63 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		8EED4153207F8902001865E7 /* Listy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Listy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EED4156207F8902001865E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EED4158207F8902001865E7 /* ListyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListyViewController.swift; sourceTree = "<group>"; };
 		8EED415B207F8902001865E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EED4160207F8904001865E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EED4165207F8904001865E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8EED4172207FA9A1001865E7 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		8EED4177207FD2BE001865E7 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		A07064E0F7C2B419640915E9 /* Pods-Listy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Listy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Listy/Pods-Listy.debug.xcconfig"; sourceTree = "<group>"; };
 		FC5CB05325D110110A9F0AB5 /* Pods_Listy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Listy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,7 +87,8 @@
 		8EED416D207FA105001865E7 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				8EED4171207FA9A1001865E7 /* DataModel.xcdatamodeld */,
+				8E70B9E2208541B400849C63 /* Category.swift */,
+				8E70B9E0208541A500849C63 /* Item.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -252,10 +255,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E70B9E1208541A500849C63 /* Item.swift in Sources */,
 				8EED4178207FD2BE001865E7 /* CategoryViewController.swift in Sources */,
-				8EED4174207FB1A2001865E7 /* DataModel.xcdatamodeld in Sources */,
 				8EED4159207F8902001865E7 /* ListyViewController.swift in Sources */,
 				8EED4157207F8902001865E7 /* AppDelegate.swift in Sources */,
+				8E70B9E3208541B400849C63 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +399,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PY38XTSL9J;
 				INFOPLIST_FILE = Listy/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.calvin.Listy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -411,7 +418,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PY38XTSL9J;
 				INFOPLIST_FILE = Listy/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.calvin.Listy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -441,19 +451,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		8EED4171207FA9A1001865E7 /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				8EED4172207FA9A1001865E7 /* DataModel.xcdatamodel */,
-			);
-			currentVersion = 8EED4172207FA9A1001865E7 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 8EED414B207F8902001865E7 /* Project object */;
 }
