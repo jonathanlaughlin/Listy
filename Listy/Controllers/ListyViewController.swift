@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ListyViewController: UITableViewController {
+class ListyViewController: SwipeTableViewController {
     
     var items: Results<Item>?
     
@@ -25,7 +25,6 @@ class ListyViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
     //MARK: Tableview Datasource Methods
@@ -36,7 +35,8 @@ class ListyViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListyCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        
         if let item = items?[indexPath.row] {
         
             cell.textLabel?.text = item.title
@@ -58,8 +58,6 @@ class ListyViewController: UITableViewController {
             do {
                 try realm.write {
                     item.done = !item.done
-//                    only for deleting items
-//                    realm.delete(item)
                 }
             }
             catch {
@@ -120,6 +118,18 @@ class ListyViewController: UITableViewController {
         tableView.reloadData()
     }
 
+    override func updateModel(at indexPath: IndexPath) {
+        if let itemForDeletion = self.items?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(itemForDeletion)
+                }
+            }
+            catch {
+                print("ERROR deleting category \(error)")
+            }
+        }
+    }
 }
 
 extension ListyViewController: UISearchBarDelegate {
