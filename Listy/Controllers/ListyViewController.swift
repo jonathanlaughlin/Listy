@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class ListyViewController: SwipeTableViewController {
     
@@ -15,8 +16,10 @@ class ListyViewController: SwipeTableViewController {
     
     let realm = try! Realm()
     
+    var bgColor: String = ""
     var selectedCategory : Category? {
         didSet {
+            bgColor = (selectedCategory?.color)!
             loadItems()
         }
     }
@@ -25,6 +28,37 @@ class ListyViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.separatorStyle = .none
+        
+    }
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        title = selectedCategory!.name
+        
+        guard let colorHex = selectedCategory?.color else { fatalError() }
+        
+        updateNavBar(withHexCode: colorHex)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        updateNavBar(withHexCode: "1D9BF6")
+        
+    }
+    
+    //MARK: Nav Bar Setup Methods
+    
+    func updateNavBar(withHexCode colorHexCode: String) {
+        guard let navBar = navigationController?.navigationBar else {fatalError("Navigation controller does not exist.")}
+        
+        guard let navBarColor = UIColor(hexString: colorHexCode) else { fatalError()}
+        
+        navBar.barTintColor = navBarColor
+        navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+        navBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        searchBar.barTintColor = navBarColor
     }
     
     //MARK: Tableview Datasource Methods
@@ -40,6 +74,14 @@ class ListyViewController: SwipeTableViewController {
         if let item = items?[indexPath.row] {
         
             cell.textLabel?.text = item.title
+            
+            if let color = UIColor(hexString: bgColor)?.darken(byPercentage: CGFloat(indexPath.row)/CGFloat(items!.count) ) {
+                
+                cell.backgroundColor = color
+                cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+                
+                //print( CGFloat(indexPath.row)/CGFloat(items!.count) )
+            }
             
             cell.accessoryType = item.done ? .checkmark : .none
         }

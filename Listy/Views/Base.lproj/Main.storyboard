@@ -42,12 +42,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Items" id="SFx-Gi-wgy">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="neL-T9-4jL">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="AddButtonPressed:" destination="H58-Jc-1sL" id="PTt-6T-b7S"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="clc-wo-zXp" id="1it-Iv-wk5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cum-lt-UFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,7 +103,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Listy" id="8aZ-vC-IWt">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qUH-XP-yWx">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="hhO-B2-LRe" id="4Lo-le-DQC"/>
                             </connections>
